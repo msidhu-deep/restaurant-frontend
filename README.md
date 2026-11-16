@@ -35,7 +35,7 @@ when you refresh the page. The backend is coming in Assignment 2.
 2. Clone this repo and open the folder
 3. Run `npm install`
 4. Run `npm run dev`
-5. Open the link it shows (usually http://localhost:5173)
+5. Open the link it shows (usually http://localhost:3000)
 
 ## Admin login
 Go to the Admin page and use the password: `admin123`
