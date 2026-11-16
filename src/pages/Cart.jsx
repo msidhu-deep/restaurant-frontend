@@ -1,9 +1,12 @@
 // Cart page - shows items, checkout, and order confirmation
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
+import { useOrders } from "../context/OrdersContext";
 
 function Cart() {
   const { cart, removeFromCart, updateQuantity, clearCart, total } = useCart();
+  // addOrder sends the order to the shared storage (admin will see it)
+  const { addOrder } = useOrders();
 
   // form state
   const [orderType, setOrderType] = useState("pickup");
@@ -32,6 +35,7 @@ function Cart() {
       status: "Preparing",
     };
 
+    addOrder(order);
     setPlacedOrder(order);
     clearCart();
   }

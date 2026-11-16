@@ -4,14 +4,17 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { CartProvider } from "./context/CartContext";
+import { OrdersProvider } from "./context/OrdersContext";
 
-// CartProvider wraps the app so every page can use the cart
+// providers wrap the app so every page can use the cart and orders
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <CartProvider>
-        <App />
-      </CartProvider>
+      <OrdersProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </OrdersProvider>
     </BrowserRouter>
   </StrictMode>,
 );

@@ -1,7 +1,11 @@
 // Reservations page - book a table or event
 import { useState } from "react";
+import { useOrders } from "../context/OrdersContext";
 
 function Reservations() {
+  // addReservation sends the booking to the shared storage (admin will see it)
+  const { addReservation } = useOrders();
+
   // one state for each form field
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
@@ -51,6 +55,7 @@ function Reservations() {
       status: "Pending",
     };
 
+    addReservation(reservation);
     setBooking(reservation);
   }
 

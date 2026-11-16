@@ -35,7 +35,7 @@ export function CartProvider({ children }) {
     setCart(cart.map((c) => (c.id === id ? { ...c, quantity } : c)));
   }
 
-  // empty the cart (we'll use this after checkout)
+  // empty the cart (we use this after checkout)
   function clearCart() {
     setCart([]);
   }
