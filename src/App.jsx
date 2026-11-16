@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Reservations from "./pages/Reservations";
+import Chat from "./pages/Chat";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/reservations" element={<Reservations />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </div>
   );
