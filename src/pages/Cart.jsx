@@ -1,8 +1,56 @@
-// Cart page - shows items in the cart
+// Cart page - shows items, checkout, and order confirmation
+import { useState } from "react";
 import { useCart } from "../context/CartContext";
 
 function Cart() {
-  const { cart, removeFromCart, updateQuantity, total } = useCart();
+  const { cart, removeFromCart, updateQuantity, clearCart, total } = useCart();
+
+  // form state
+  const [orderType, setOrderType] = useState("pickup");
+  const [address, setAddress] = useState("");
+  const [error, setError] = useState("");
+
+  // holds the order after it's placed (null = not placed yet)
+  const [placedOrder, setPlacedOrder] = useState(null);
+
+  function handlePlaceOrder() {
+    // delivery needs an address
+    if (orderType === "delivery" && address.trim() === "") {
+      setError("Please enter a delivery address.");
+      return;
+    }
+
+    setError("");
+
+    // make the order object
+    const order = {
+      id: Date.now(),
+      items: cart,
+      total: total,
+      type: orderType,
+      address: address,
+      status: "Preparing",
+    };
+
+    setPlacedOrder(order);
+    clearCart();
+  }
+
+  // order placed - show confirmation (must be checked before the empty cart)
+  if (placedOrder) {
+    return (
+      <div>
+        <h1>Order Confirmed!</h1>
+        <p>Order #{placedOrder.id}</p>
+        <p>Type: {placedOrder.type}</p>
+        {placedOrder.type === "delivery" && (
+          <p>Address: {placedOrder.address}</p>
+        )}
+        <p>Status: {placedOrder.status}</p>
+        <p>Total: ${placedOrder.total.toFixed(2)}</p>
+      </div>
+    );
+  }
 
   // if cart is empty, show a message instead
   if (cart.length === 0) {
@@ -39,6 +87,44 @@ function Cart() {
       ))}
 
       <h2>Total: ${total.toFixed(2)}</h2>
+
+      {/* pickup or delivery */}
+      <h3>How do you want your order?</h3>
+      <label>
+        <input
+          type="radio"
+          value="pickup"
+          checked={orderType === "pickup"}
+          onChange={(e) => setOrderType(e.target.value)}
+        />
+        Pickup
+      </label>
+      <label>
+        <input
+          type="radio"
+          value="delivery"
+          checked={orderType === "delivery"}
+          onChange={(e) => setOrderType(e.target.value)}
+        />
+        Delivery
+      </label>
+
+      {/* address box only shows for delivery */}
+      {orderType === "delivery" && (
+        <div>
+          <input
+            type="text"
+            placeholder="Delivery address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+        </div>
+      )}
+
+      {/* error message if something is missing */}
+      {error && <p>{error}</p>}
+
+      <button onClick={handlePlaceOrder}>Place Order</button>
     </div>
   );
 }
