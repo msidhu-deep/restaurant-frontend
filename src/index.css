@@ -1,41 +1,66 @@
-/* Global styles for the whole app */
+/* Global styles - nicer look */
+:root {
+  --red: #b23a2a;
+  --dark-red: #8b2e1f;
+  --cream: #faf6f1;
+  --gold: #e0a43a;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #faf6f1;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--cream);
   color: #333;
+  line-height: 1.5;
 }
 
 /* page content sits in a centered box */
-#root > div > div,
-#root > div > h1 {
+#root > div > div {
   max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 10px 20px 60px;
 }
 
+/* headings */
 h1 {
-  color: #8b2e1f;
-  margin-top: 24px;
+  color: var(--dark-red);
+  margin-top: 30px;
+  font-size: 2.2rem;
 }
 
-/* navbar */
+h2 {
+  color: var(--dark-red);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 6px;
+  margin-top: 40px;
+}
+
+h3 {
+  margin: 0 0 6px;
+}
+
+/* navbar sticks to the top */
 nav {
   display: flex;
-  gap: 24px;
-  background: #8b2e1f;
+  gap: 28px;
   padding: 16px 30px;
+  background: linear-gradient(90deg, var(--dark-red), var(--red));
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  border-bottom: 2px solid var(--gold);
 }
 
 /* cards: menu items, cart rows, orders, reservations */
@@ -45,41 +70,79 @@ nav a:hover {
 .reservation-box,
 .menu-row {
   background: white;
-  border: 1px solid #e5dcd2;
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin: 12px 0;
+  border: 1px solid #eadfd3;
+  border-left: 5px solid var(--gold);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 14px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+/* cards lift up a little on hover */
+.menu-card:hover,
+.cart-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+p {
+  margin: 6px 0;
 }
 
 /* buttons */
 button {
-  background: #8b2e1f;
+  background: var(--red);
   color: white;
   border: none;
-  border-radius: 6px;
-  padding: 8px 14px;
-  margin: 4px 4px 4px 0;
+  border-radius: 8px;
+  padding: 9px 16px;
+  margin: 4px 6px 4px 0;
+  font-size: 0.95rem;
   cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.1s;
 }
 
 button:hover {
-  background: #6e2418;
+  background: var(--dark-red);
+}
+
+button:active {
+  transform: scale(0.96);
 }
 
 /* inputs and dropdowns */
 input,
 select {
-  padding: 8px;
-  margin: 4px 6px 4px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 9px 10px;
+  margin: 4px 8px 4px 0;
+  border: 1px solid #d6cabd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: white;
 }
 
-/* form rows */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(178, 58, 42, 0.15);
+}
+
+/* forms */
 form div {
-  margin: 8px 0;
+  margin: 10px 0;
 }
 
 label {
+  font-weight: 600;
   margin-right: 6px;
+}
+
+ul {
+  padding-left: 22px;
 }

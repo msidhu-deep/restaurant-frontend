@@ -7,6 +7,7 @@ function Navbar() {
       <Link to="/">Home</Link>
       <Link to="/menu">Menu</Link>
       <Link to="/cart">Cart</Link>
+      <Link to="/my-orders">My Orders</Link>
       <Link to="/reservations">Reservations</Link>
       <Link to="/chat">Chat</Link>
       <Link to="/admin">Admin</Link>

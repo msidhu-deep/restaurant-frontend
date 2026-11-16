@@ -7,6 +7,7 @@ import Cart from "./pages/Cart";
 import Reservations from "./pages/Reservations";
 import Chat from "./pages/Chat";
 import Admin from "./pages/Admin";
+import MyOrders from "./pages/MyOrders";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/my-orders" element={<MyOrders />} />
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/admin" element={<Admin />} />
