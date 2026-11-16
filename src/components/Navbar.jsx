@@ -9,7 +9,7 @@ function Navbar() {
       <Link to="/cart">Cart</Link>
       <Link to="/reservations">Reservations</Link>
       <Link to="/chat">Chat</Link>
-      <Link to="/login">Login</Link>
+      <Link to="/admin">Admin</Link>
     </nav>
   );
 }
