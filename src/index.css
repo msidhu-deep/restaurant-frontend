@@ -42,6 +42,7 @@ h3 {
 /* navbar sticks to the top */
 nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 28px;
   padding: 16px 30px;
   background: linear-gradient(90deg, var(--dark-red), var(--red));
@@ -86,6 +87,28 @@ nav a:hover {
 .cart-row:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* menu cards sit in two columns */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* inside the grid the gap handles spacing */
+.menu-grid .menu-card {
+  margin: 0;
+}
+
+/* allergen note */
+.disclaimer {
+  background: #fff4dc;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
 }
 
 p {
@@ -145,4 +168,11 @@ label {
 
 ul {
   padding-left: 22px;
+}
+
+/* small screens: one column */
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
 }

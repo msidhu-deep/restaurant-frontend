@@ -4,7 +4,7 @@ import { useMenu } from "../context/MenuContext";
 import MenuItem from "../components/MenuItem";
 
 function Menu() {
-  // menu items now come from shared state (admin can change them)
+  // menu items come from shared state (admin can change them)
   const { menuItems } = useMenu();
 
   // one state for each filter
@@ -28,6 +28,12 @@ function Menu() {
   return (
     <div>
       <h1>Our Menu</h1>
+
+      {/* allergen note */}
+      <p className="disclaimer">
+        Allergies? Please ask our staff before ordering. Dietary tags are a
+        guide only, and our kitchen handles nuts, gluten, and dairy.
+      </p>
 
       {/* search box */}
       <input
@@ -65,10 +71,12 @@ function Menu() {
       {/* show a message if nothing matches */}
       {filteredItems.length === 0 && <p>No items match your search.</p>}
 
-      {/* loop through the filtered items only */}
-      {filteredItems.map((item) => (
-        <MenuItem key={item.id} item={item} />
-      ))}
+      {/* grid wrapper puts the cards in two columns */}
+      <div className="menu-grid">
+        {filteredItems.map((item) => (
+          <MenuItem key={item.id} item={item} />
+        ))}
+      </div>
     </div>
   );
 }

@@ -4,10 +4,11 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Cart from "./pages/Cart";
+import MyOrders from "./pages/MyOrders";
 import Reservations from "./pages/Reservations";
+import MyReservations from "./pages/MyReservations";
 import Chat from "./pages/Chat";
 import Admin from "./pages/Admin";
-import MyOrders from "./pages/MyOrders";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/my-orders" element={<MyOrders />} />
         <Route path="/reservations" element={<Reservations />} />
+        <Route path="/my-reservations" element={<MyReservations />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
