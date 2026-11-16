@@ -1,9 +1,12 @@
 // Menu page - search and filter the menu
 import { useState } from "react";
-import menuItems from "../data/menuData";
+import { useMenu } from "../context/MenuContext";
 import MenuItem from "../components/MenuItem";
 
 function Menu() {
+  // menu items now come from shared state (admin can change them)
+  const { menuItems } = useMenu();
+
   // one state for each filter
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
